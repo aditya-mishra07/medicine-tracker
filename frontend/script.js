@@ -14,7 +14,15 @@ function fetchAllMedicine() {
             tbody.appendChild(row);
           }
         });
+      } else {
+        errorMessage.style.display = "block";
+        table.style.display = "none";
       }
+    })
+    .catch((error) => {
+      errorMessage.style.display = "block";
+      table.style.display = "none";
+      console.log(error);
     });
 }
 
