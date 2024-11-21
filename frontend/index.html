@@ -15,21 +15,13 @@
       <h1>Medicine Tracker</h1>
     </header>
     <main>
-      <div class="add-medicine">
-        <h3>Insert Medicine</h3>
-        <form id="medicine-form">
-          <div>
-            <label>Name:</label>
-            <input type="text" name="name" id="name" />
-          </div>
-          <div>
-            <label>Price:</label>
-            <input type="number" step="0.01" name="price" id="price" />
-          </div>
+      <input
+        type="search"
+        id="search-bar"
+        placeholder="Search..."
+        onkeyup="searchTable()"
+      />
 
-          <button type="submit">Add Medicine</button>
-        </form>
-      </div>
       <div id="error-message" class="error-message">
         No data available to display.
       </div>
@@ -44,6 +36,21 @@
           </thead>
           <tbody id="tbody"></tbody>
         </table>
+      </div>
+      <div class="add-medicine">
+        <h3>Insert Medicine</h3>
+        <form id="medicine-form">
+          <div>
+            <label>Name:</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label>Price:</label>
+            <input type="number" step="0.01" name="price" id="price" />
+          </div>
+
+          <button type="submit">Add Medicine</button>
+        </form>
       </div>
     </main>
     <script src="script.js"></script>

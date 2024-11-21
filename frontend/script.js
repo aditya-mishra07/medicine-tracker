@@ -110,5 +110,36 @@ function updateMedicine(med) {
   });
 }
 
+function searchTable() {
+  const search = document.getElementById("search-bar").value.toUpperCase();
+  const table = document.getElementById("medicine-list");
+  const tr = table.querySelectorAll("tr");
+  let hasResults = false;
+  for (let i = 1; i < tr.length; i++) {
+    console.log(tr[i]);
+    const td = tr[i].querySelector("td");
+
+    if (td) {
+      const name = td.textContent;
+      if (name.toUpperCase().includes(search)) {
+        tr[i].style.display = "";
+        hasResults = true;
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+
+  const message = document.getElementById("error-message");
+
+  if (!hasResults) {
+    table.style.display = "none";
+    message.style.display = "block";
+  } else {
+    table.style.display = "";
+    message.style.display = "none";
+  }
+}
+
 fetchAllMedicine();
 addMedicine();
