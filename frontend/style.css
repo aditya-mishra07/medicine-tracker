@@ -31,8 +31,31 @@ body {
 
 /* ---- Your custom styles below ---- */
 
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 .error-message {
   display: none;
   color: red;
   font-size: 1.2em;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table {
+  border-collapse: collapse;
+  font-size: 0.9em;
 }

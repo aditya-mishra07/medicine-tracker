@@ -12,6 +12,7 @@ function fetchAllMedicine() {
             row.innerHTML = `
             <td>${medicine.name}</td>
             <td>${medicine.price}</td>
+            <td><button class="delete-btn" onclick="deleteMedicine(this)">Delete</button></td>
           `;
             tbody.appendChild(row);
           }
@@ -47,6 +48,21 @@ function addMedicine() {
     }
     //todo else display message
   });
+}
+
+async function deleteMedicine(med) {
+  const row = med.parentNode.parentNode;
+  const name = row.querySelector("td").textContent;
+
+  try {
+    await fetch("http://localhost:8000/delete", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ name: name }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 fetchAllMedicine();
