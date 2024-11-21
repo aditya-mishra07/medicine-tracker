@@ -130,3 +130,7 @@ td button {
   color: white;
   font-weight: bold;
 }
+
+.update-btn {
+  background-color: rgb(183, 109, 252);
+}

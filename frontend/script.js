@@ -9,10 +9,13 @@ function fetchAllMedicine() {
         data.medicines.forEach((medicine) => {
           if (medicine.name && medicine.price) {
             const row = document.createElement("tr");
+            price = parseFloat(medicine.price).toFixed(2);
             row.innerHTML = `
             <td>${medicine.name}</td>
-            <td>${medicine.price}</td>
-            <td><button class="delete-btn" onclick="deleteMedicine(this)">Delete</button></td>
+            <td>${price}</td>
+            <td><button class="delete-btn" onclick="deleteMedicine(this)">Delete</button>
+            <button class="update-btn" onclick="updateMedicine(this)">Update</button>
+            </td>
           `;
             tbody.appendChild(row);
           }
@@ -63,6 +66,48 @@ async function deleteMedicine(med) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function updateMedicine(med) {
+  const row = med.parentNode.parentNode;
+
+  const tr = document.createElement("tr");
+
+  const cells = row.querySelectorAll("td");
+  const name = cells[0].textContent.trim();
+  const price = cells[1].textContent.trim();
+  const btns = cells[2].innerHTML;
+  const td1 = document.createElement("td");
+  td1.textContent = name;
+
+  const td2 = document.createElement("td");
+  td2.innerHTML = `<input type="number" placeholder="price" step="0.01" value="${price}" />`;
+
+  const td3 = document.createElement("td");
+  td3.innerHTML = btns;
+
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+
+  document.getElementById("tbody").replaceChild(tr, row);
+
+  const input = td2.querySelector("input");
+  input.addEventListener("keydown", async function (event) {
+    if (event.key === "Enter") {
+      let newPrice = input.value.trim();
+      if (newPrice === "" || isNaN(newPrice)) {
+        newPrice = price;
+      }
+
+      const response = await fetch("http://localhost:8000/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ name: name, price: newPrice }),
+      });
+      td2.textContent = parseFloat(newPrice).toFixed(2);
+    }
+  });
 }
 
 fetchAllMedicine();
