@@ -5,12 +5,14 @@ function fetchAllMedicine() {
     .then((data) => {
       if (data && data.medicines) {
         data.medicines.forEach((medicine) => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-          <td>${medicine.name}</td>
-          <td>${medicine.price}</td>
-        `;
-          tbody.appendChild(row);
+          if (medicine.name && medicine.price) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${medicine.name}</td>
+            <td>${medicine.price}</td>
+          `;
+            tbody.appendChild(row);
+          }
         });
       }
     });
