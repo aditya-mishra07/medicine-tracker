@@ -58,4 +58,75 @@ th {
 table {
   border-collapse: collapse;
   font-size: 0.9em;
+  margin-bottom: 25px;
+  width: 100%;
+}
+.table-section {
+  height: 300px;
+  width: 60%;
+}
+
+.medicine-list thead tr {
+  background-color: rgb(183, 109, 252);
+  color: #ffffff;
+  text-align: left;
+}
+.medicine-list tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.medicine-list tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+td button {
+  border: none;
+  border-radius: 25px;
+  padding: 5px 15px;
+  font-weight: 550;
+  color: white;
+}
+.delete-btn {
+  background-color: rgb(255, 0, 0);
+}
+
+.add-medicine {
+  margin-top: 30px;
+  width: 40%;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-medicine div {
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.add-medicine label {
+  width: 50px;
+}
+.add-medicine input {
+  width: 200px;
+  padding: 5px;
+  border: none;
+  border-radius: 25px;
+}
+
+.add-medicine button {
+  border-radius: 20px;
+  border: 1px solid green;
+  background-color: rgb(11, 167, 11);
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
