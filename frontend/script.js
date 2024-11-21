@@ -45,6 +45,7 @@ function addMedicine() {
         console.error("error: " + error);
       }
     }
+    //todo else display message
   });
 }
 
